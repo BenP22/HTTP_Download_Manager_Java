@@ -1,0 +1,17 @@
+DownloadManager - Manages the download. Starts the threads to download the data, Prints the download percentage,
+                  Writes the data to the disk.
+
+DownloadMetadata - Defines the structure of the metadata, has methods to serialize and deserialize the metadata to
+                   The disk.
+
+DownloadWorker - Given a segment to download, download it and send the output to the BlockingQueue.
+                 It contacts the server to receive a given range and produce the output while being able
+                 To recover from failures.
+
+Segment - A segment of the file, defines the start and the end. It has methods to split a range to smaller ranges,
+          And some more methods to work with segments that are useful after a shutdown.
+
+SegmentPayload - The payload that is sent to the BlockingQueue, produced by a DownloadWorker and received
+                 By the download manager.
+
+IdcDm - Has the main method. Accepts arguments and starts a new DownloadManager with them.
